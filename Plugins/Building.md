@@ -84,6 +84,10 @@ MyPlugin/                      the plugin name
     └── Help/                  plugin docs, must contain index.html
 ```
 
+`IDE Resources/Help/` holds the plugin's HTML documentation. When it contains `index.html`, the IDE adds a menu item
+for the plugin under **Help**. Other `.html` pages and pictures can sit next to it, but subfolders inside `Help/` are
+ignored.
+
 All `Build Resources` folder names:
 
 | Folder | Binary |

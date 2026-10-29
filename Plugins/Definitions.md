@@ -109,6 +109,10 @@ Enums go in a module (`enums` field) or a class.
 
 Attributes are optional everywhere. Leave the pair as `0, nullptr` (or `nullptr, 0`).
 
+- `value` is compiled as Xojo code, like a declaration string. A value that isn't a valid Xojo expression gives a
+  *Syntax error* located at the member when the project compiles (tested).
+- A `Deprecated` attribute hides the member from autocomplete (tested on a module method).
+
 ## Containers
 
 ### REALmoduleDefinition
