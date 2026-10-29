@@ -59,7 +59,8 @@ g++ -shared -fPIC -O2 -std=c++17 -I "$SDK/Includes" \
 ```
 
 Add `$(pkg-config --cflags --libs gtk+-3.0)` when the plugin uses GTK. Build on each architecture you need
-(x86-64, arm64, …) or use a cross compiler.
+(x86-64, arm64, …) or use a cross compiler. A plugin that ships a dependency in `Libs/` also needs
+`-Wl,-rpath,'$ORIGIN'` (see [Dependency libraries](#dependency-libraries-libs)).
 
 ## Packaging
 
@@ -99,6 +100,63 @@ All `Build Resources` folder names:
 - Include only the targets you built. A project can only be built for targets that have a binary.
 - Library file names may differ between folders (`MyPlugin64.dll`), except the WinUI rule above.
 
+### Dependency libraries (`Libs/`)
+
+When the plugin uses a third-party shared library, either link it into the plugin or ship it in a `Libs/` folder
+inside the target's `Build Resources` folder (Xojo 2024r1+):
+
+```text
+MyPlugin/Build Resources/
+├── Linux x86-64/
+│   ├── MyPlugin.so
+│   └── Libs/
+│       └── libfoo.so.1
+└── Windows x86-64/
+    ├── MyPlugin.dll
+    └── Libs/
+        └── foo.dll
+```
+
+- **Load order:** Xojo loads every library in `Libs/` first, then the plugin's main library. The dependency is
+  already loaded when the main library needs it.
+- `Libs/` works in any target folder. Xojo's own database plugins use it for Linux and link statically elsewhere,
+  so the Linux setup below is the proven one; Windows and macOS use of `Libs/` is *(unverified)*.
+- Each target folder needs its own `Libs/` with that target's build of the dependency. Targets that link the
+  dependency statically have no `Libs/` folder; mixing both approaches across targets is fine.
+- **The file name must match what the main library asks for.** On Linux that's the dependency's soname
+  (`libfoo.so.1`, not `libfoo.so`); on Windows, the DLL name in the import table. Check with `readelf -d MyPlugin.so`
+  (`NEEDED` lines) or `dumpbin /dependents MyPlugin.dll`.
+- **Linux: link the main library with `-Wl,-rpath,'$ORIGIN'`**, so it looks for its dependencies next to itself.
+  Xojo's own plugins that use `Libs/` are built this way. Keep the single quotes so the shell doesn't expand
+  `$ORIGIN`:
+
+```sh
+g++ -shared -fPIC -O2 -std=c++17 -I "$SDK/Includes" -I deps/include \
+  -o build/linux/MyPlugin.so src/MyPlugin.cpp "$SDK/GlueCode/PluginMain.cpp" \
+  -L deps/lib -lfoo -Wl,-rpath,'$ORIGIN'
+readelf -d build/linux/MyPlugin.so | grep -E 'NEEDED|RUNPATH'    # expect libfoo.so.1 and $ORIGIN
+```
+
+- macOS *(unverified)*: give the dependency a loader-relative install name before linking against it
+  (`install_name_tool -id @loader_path/libfoo.dylib libfoo.dylib`), and ship a universal (x86_64 + arm64) build of it.
+- Ship the dependency's license file if its license requires it (put it in `IDE Resources/Help/` or tell the user).
+
+**Link statically** (the default) when:
+
+- the library is available as a static library (`.lib`, `.a`; on Linux built with `-fPIC`) and its license allows
+  static linking;
+- you want one self-contained binary per target, with no risk that another plugin or the system provides a
+  different version of the same library.
+
+**Ship it in `Libs/`** when:
+
+- only a shared library is available (a vendor binary, or a library that's impractical to build statically);
+- its license requires dynamic linking, or lets users replace it (LGPL);
+- it's large and you want the plugin's own library to stay small, or the dependency is updated separately.
+
+Libraries in `Libs/` are loaded by name, so two plugins shipping different versions of the same library can clash.
+Prefer static linking unless one of the reasons above applies.
+
 Zip it with `tar`, which ships with Windows 10+ and macOS and writes the forward-slash paths a zip needs
 (`-a` picks the zip format from the `.zip` extension):
 
@@ -135,7 +193,8 @@ Ask the user to:
 
 If the plugin doesn't show up, check, in order: that it's a zip archive and its top level is right; the folder names
 and their case; that the binary for the user's OS and architecture is in the right `Build Resources` folder; on
-Windows, that `REALPluginMain` is exported (`/DWIN32`); that `PluginEntry` registers every item.
+Windows, that `REALPluginMain` is exported (`/DWIN32`); that every dependency is linked in or present in `Libs/`
+under the exact name the library asks for; that `PluginEntry` registers every item.
 
 If the plugin loads but the project fails to compile with an error located in the plugin (**File** = the plugin's
 module or class, **Location** = a member), a declaration string is invalid, often because it uses a reserved word.

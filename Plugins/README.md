@@ -18,6 +18,7 @@ glue code you compile against.
 | [Writing.md](Writing.md) | Writing the plugin source: skeleton, declarations, C signatures, types, strings, events |
 | [Definitions.md](Definitions.md) | Filling a definition struct: every field, in order, for every struct |
 | [Controls.md](Controls.md) | The plugin adds a Desktop or iOS control, or hosts a native OS control |
+| [Database.md](Database.md) | The plugin adds a `Database` subclass for an engine Xojo doesn't support |
 | [SdkFunctions.md](SdkFunctions.md) | Looking up an SDK function: strings, objects, arrays, variants, framework calls |
 | [Building.md](Building.md) | Compiling, packaging as a `.xojo_plugin` zip, installing, updating |
 | [Example.md](Example.md) | A complete small plugin and the Xojo code that uses it |
@@ -36,6 +37,8 @@ Usually not. Pick the first option that does the job:
      functions, many structs or callbacks);
    - the work needs native threads or callbacks that Xojo can't receive safely through a Declare;
    - the app must host a native OS control (Win32, Cocoa, GTK, XAML) inside a Xojo layout;
+   - the app needs a database engine Xojo doesn't support, through its C client library
+     ([Database.md](Database.md));
    - a hot loop needs native speed.
 
 Don't suggest commercial third-party plugins.
