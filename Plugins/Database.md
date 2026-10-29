@@ -3,9 +3,11 @@
 A database plugin adds a `Database` subclass backed by native code. Xojo code then uses it like any built-in
 database: `Connect`, `ExecuteSQL`, `SelectSQL`, `RowSet`, `DatabaseRow`, transactions and `DatabaseException`.
 
-> **Status:** derived from the Plugins SDK 2026r1 headers (`REALplugin.h`, `rb_plugin.h`) only; the SDK ships no
-> database example. Nothing on this page is tested yet, so treat it all as *(unverified)*. After the first
-> successful build and test, remove this note and mark only what's still unknown.
+> **Status:** derived from the Plugins SDK 2026r1 headers (`REALplugin.h`, `rb_plugin.h`); the SDK ships no
+> database example. The example below is tested on Windows x64 with Xojo 2026r3.1: a `Database` subclass with
+> `Connect() As Boolean`, `ExecuteSQL` and `SelectSQL` with values, `For Each` and `While Not AfterLastRow` over the
+> RowSet, `RowCount`, transactions and `DatabaseException`. Everything else on this page (schema functions, `AddRow`,
+> `Prepare`, editing a RowSet, non-text column types, the IDE functions) is *(unverified)*.
 
 ## When to write one
 
@@ -89,8 +91,9 @@ statement; never paste values into the SQL text.
 
 ## REALdbCursorDefinition
 
-Set `version` to `kCurrentREALDatabaseVersion`. The cursor starts **on the first row**, or at EOF when there are no
-rows.
+Set `version` to `kCurrentREALDatabaseVersion`. The cursor starts **before the first row**: Xojo calls
+`cursorNextRow` once to move onto the first row before reading any value. A cursor that starts on the first row loses
+that row (tested: `For Each` skipped it).
 
 | Field | Called for | Signature |
 | ----- | ---------- | --------- |
@@ -157,8 +160,7 @@ static REALproperty MyDBProperties[] = {   // connection settings the Xojo code 
   raises `DatabaseException` (see below).
 - From a `REALdbDatabase` you get your struct back with `REALGetDBFromREALdbDatabase`, and from a RowSet's
   `REALdbCursor` with `REALGetCursorFromREALdbCursor`.
-- If the compiler rejects `Connect() As Boolean` as clashing with the framework's `Connect`, ask the user for the
-  exact error text, then match the framework signature it names.
+- Declaring `Connect() As Boolean` on the plugin class works: Xojo calls it for `db.Connect` (tested).
 
 ## Errors
 
@@ -277,7 +279,8 @@ struct dbDatabase {
 
 struct dbCursor {
 	std::vector<std::pair<std::string, std::string>> rows;   // copied, so the RowSet outlives later changes
-	size_t current = 0;
+	int current = -1;                                        // before the first row; Xojo calls NextRow first
+	int count() const { return (int)rows.size(); }
 };
 
 static void ClearError(dbDatabase *db)
@@ -320,12 +323,12 @@ static REALstring CursorColumnName(dbCursor *, int column)
 
 static int CursorRowCount(dbCursor *cursor)
 {
-	return (int)cursor->rows.size();
+	return cursor->count();
 }
 
 static void CursorColumnValue(dbCursor *cursor, int column, void **value, unsigned char *type, int *length)
 {
-	if (cursor->current >= cursor->rows.size() || column < 0 || column > 1) {
+	if (cursor->current < 0 || cursor->current >= cursor->count() || column < 0 || column > 1) {
 		*value = nullptr;
 		*type = dbTypeNull;
 		*length = 0;
@@ -339,8 +342,8 @@ static void CursorColumnValue(dbCursor *cursor, int column, void **value, unsign
 
 static RBBoolean CursorNextRow(dbCursor *cursor)
 {
-	if (cursor->current < cursor->rows.size()) cursor->current++;
-	return cursor->current < cursor->rows.size();
+	if (cursor->current < cursor->count()) cursor->current++;
+	return cursor->current < cursor->count();
 }
 
 static int CursorColumnType(dbCursor *, int)
@@ -350,12 +353,12 @@ static int CursorColumnType(dbCursor *, int)
 
 static RBBoolean CursorIsBOF(dbCursor *cursor)
 {
-	return cursor->rows.empty();
+	return cursor->current < 0;
 }
 
 static RBBoolean CursorIsEOF(dbCursor *cursor)
 {
-	return cursor->current >= cursor->rows.size();
+	return cursor->current >= cursor->count();
 }
 
 // ---------------------------------------------------------------------------
@@ -520,6 +523,14 @@ If db.Connect Then
     System.DebugLog(row.Column("key").StringValue + " = " + row.Column("value").StringValue)
   Next
 
+  Var rs As RowSet = db.SelectSQL("ALL")
+  System.DebugLog("rows: " + rs.RowCount.ToString)
+  While Not rs.AfterLastRow
+    System.DebugLog(rs.Column("key").StringValue)
+    rs.MoveToNextRow
+  Wend
+  rs.Close
+
   Try
     db.ExecuteSQL("DROP TABLE x")
   Catch err As DatabaseException
@@ -530,4 +541,7 @@ If db.Connect Then
 End If
 ```
 
-Expected output in the Messages pane: `lang = Xojo`, `name = Ada`, then `1: unsupported command (use PUT)`.
+Expected output in the Messages pane: `lang = Xojo`, `name = Ada`, `rows: 2`, `lang`, `name`, then
+`1: unsupported command (use PUT)`. When **Project ▸ Break On Exceptions** is on (the default), the debugger first
+stops on the `ExecuteSQL("DROP TABLE x")` line: that's the plugin raising `DatabaseException`. Resume and the
+`Catch` handles it.
