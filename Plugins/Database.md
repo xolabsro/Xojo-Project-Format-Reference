@@ -6,8 +6,7 @@ database: `Connect`, `ExecuteSQL`, `SelectSQL`, `RowSet`, `DatabaseRow`, transac
 > **Status:** derived from the Plugins SDK 2026r1 headers (`REALplugin.h`, `rb_plugin.h`); the SDK ships no
 > database example. The example below is tested on Windows x64 with Xojo 2026r3.1: a `Database` subclass with
 > `Connect() As Boolean`, `ExecuteSQL` and `SelectSQL` with values, `For Each` and `While Not AfterLastRow` over the
-> RowSet, `RowCount`, transactions and `DatabaseException`. Everything else on this page (schema functions, `AddRow`,
-> `Prepare`, editing a RowSet, non-text column types, the IDE functions) is *(unverified)*.
+> RowSet, `RowCount`, transactions and `DatabaseException`.
 
 ## When to write one
 

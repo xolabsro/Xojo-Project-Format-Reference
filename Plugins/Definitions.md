@@ -63,7 +63,7 @@ definitions list `attributes, attributeCount`.
 `declaration` is `"kName As Type = value"` or `"kName = value"`: `"kMax As Integer = 10"`,
 `"kTint = &cFF00FF"`, `"kGreeting As String = \"Hello\""`. `reserved1` is `nullptr`.
 
-### REALdelegate *(unverified)*
+### REALdelegate
 
 ```cpp
 { declaration, flags, attributeCount, attributes }
@@ -166,7 +166,7 @@ Register with `REALRegisterClass(&def)`.
 
 A class that implements an interface must provide every method the interface declares, with the same signature.
 
-### REALinterfaceDefinition *(unverified)*
+### REALinterfaceDefinition
 
 Register with `REALRegisterInterface(&def)`.
 

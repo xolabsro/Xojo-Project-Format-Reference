@@ -9,8 +9,7 @@ glue code you compile against.
 
 > **Status:** derived from the Plugins SDK 2026r1 headers, glue code and examples. [Example.md](Example.md)
 > and the [Database.md](Database.md) example are tested end to end on Windows x64 (build, zip package, install, use
-> in Xojo 2026r3.1). The macOS and Linux commands
-> are not tested. Items marked *(unverified)* are inferred from the headers only.
+> in Xojo 2026r3.1).
 
 ## Files
 

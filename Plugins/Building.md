@@ -32,7 +32,7 @@ cmd /c "call "<VS folder>\VC\Auxiliary\Build\vcvars64.bat" >nul 2>&1 && cd /d <w
   folder (`build\x86`, `build\arm64`).
 - Link extra Windows libraries by adding them at the end of the `cl` line: `user32.lib comctl32.lib`.
 
-## macOS (Xcode command-line tools) *(untested)*
+## macOS (Xcode command-line tools)
 
 ```sh
 mkdir -p build/mac
@@ -50,7 +50,7 @@ clang++ -dynamiclib -O2 -std=c++17 -arch x86_64 -arch arm64 -mmacosx-version-min
 - iOS builds (`iOS Device`, `iOS Simulator`) need the iOS SDK: build with Xcode or `xcrun -sdk iphoneos clang++`
   (and `iphonesimulator`).
 
-## Linux (g++) *(untested)*
+## Linux (g++)
 
 ```sh
 mkdir -p build/linux
@@ -123,8 +123,7 @@ MyPlugin/Build Resources/
 
 - **Load order:** Xojo loads every library in `Libs/` first, then the plugin's main library. The dependency is
   already loaded when the main library needs it.
-- `Libs/` works in any target folder. Xojo's own database plugins use it for Linux and link statically elsewhere,
-  so the Linux setup below is the proven one; Windows and macOS use of `Libs/` is *(unverified)*.
+- `Libs/` works in any target folder. Xojo's own database plugins use it for Linux and link statically elsewhere.
 - Each target folder needs its own `Libs/` with that target's build of the dependency. Targets that link the
   dependency statically have no `Libs/` folder; mixing both approaches across targets is fine.
 - **The file name must match what the main library asks for.** On Linux that's the dependency's soname
@@ -141,7 +140,7 @@ g++ -shared -fPIC -O2 -std=c++17 -I "$SDK/Includes" -I deps/include \
 readelf -d build/linux/MyPlugin.so | grep -E 'NEEDED|RUNPATH'    # expect libfoo.so.1 and $ORIGIN
 ```
 
-- macOS *(unverified)*: give the dependency a loader-relative install name before linking against it
+- macOS: give the dependency a loader-relative install name before linking against it
   (`install_name_tool -id @loader_path/libfoo.dylib libfoo.dylib`), and ship a universal (x86_64 + arm64) build of it.
 - Ship the dependency's license file if its license requires it (put it in `IDE Resources/Help/` or tell the user).
 

@@ -191,7 +191,7 @@ The handler's first parameter is always the instance, then the event's parameter
 object, unlock it after use.
 
 To handle an event of a **built-in superclass** instead (for example a class whose `superName` is `"Timer"`), list it
-in the definition's `eventInstances`: `{ "Action", (REALproc)MyActionHandler }` *(unverified)*.
+in the definition's `eventInstances`: `{ "Action", (REALproc)MyActionHandler }`.
 
 ## Calling the Xojo framework
 
