@@ -25,53 +25,6 @@ Begin DesktopWindow Window2 Implements TableDataSource
    Type            =   0
    Visible         =   True
    Width           =   360
-   Begin DesktopTable Table1
-      AllowAutoDeactivate=   True
-      AllowAutoHideScrollbars=   True
-      AllowColumnReordering=   False
-      AllowExpandableRows=   False
-      AllowFocusRing  =   True
-      AllowResizableColumns=   False
-      AllowResizableRows=   False
-      AllowRowDragging=   False
-      AllowRowReordering=   False
-      Bold            =   False
-      ColumnCount     =   2
-      ColumnWidths    =   ""
-      DefaultRowHeight=   -1
-      DropIndicatorVisible=   False
-      Enabled         =   True
-      FontName        =   "System"
-      FontSize        =   0.0
-      FontUnit        =   0
-      GridLineStyle   =   0
-      HasBorder       =   True
-      HasColumnHeader =   True
-      HasHorizontalScrollbar=   False
-      HasVerticalScrollbar=   True
-      Height          =   164
-      Index           =   -2147483648
-      InitialValue    =   "Column 1	Column 2"
-      Italic          =   False
-      Left            =   156
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   True
-      LockTop         =   True
-      RequiresSelection=   False
-      RowSelectionType=   0
-      Scope           =   0
-      TabIndex        =   1
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Tooltip         =   ""
-      Top             =   20
-      Transparent     =   False
-      Underline       =   False
-      Visible         =   True
-      Width           =   184
-   End
    Begin PropertyTable PropTable
       AllowAutoDeactivate=   True
       AllowAutoHideScrollbars=   True
@@ -118,6 +71,53 @@ Begin DesktopWindow Window2 Implements TableDataSource
       Underline       =   False
       Visible         =   True
       Width           =   124
+   End
+   Begin DesktopTable Table1
+      AllowAutoDeactivate=   True
+      AllowAutoHideScrollbars=   True
+      AllowColumnReordering=   False
+      AllowExpandableRows=   False
+      AllowFocusRing  =   True
+      AllowResizableColumns=   False
+      AllowResizableRows=   False
+      AllowRowDragging=   False
+      AllowRowReordering=   False
+      Bold            =   False
+      ColumnCount     =   2
+      ColumnWidths    =   ""
+      DefaultRowHeight=   -1
+      DropIndicatorVisible=   False
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      GridLineStyle   =   0
+      HasBorder       =   True
+      HasColumnHeader =   True
+      HasHorizontalScrollbar=   False
+      HasVerticalScrollbar=   True
+      Height          =   164
+      Index           =   -2147483648
+      InitialValue    =   "Column 1	Column 2"
+      Italic          =   False
+      Left            =   156
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
+      RequiresSelection=   False
+      RowSelectionType=   0
+      Scope           =   0
+      TabIndex        =   1
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   20
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   184
    End
 End
 #tag EndDesktopWindow

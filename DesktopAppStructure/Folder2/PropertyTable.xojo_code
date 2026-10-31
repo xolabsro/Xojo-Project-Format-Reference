@@ -20,6 +20,8 @@ Inherits DesktopTable
 		Sub Opening()
 		  ColumnCount = 2
 		  HasTranslucentBackground = True
+		  
+		  RaiseEvent Opening
 		End Sub
 	#tag EndEvent
 
@@ -46,6 +48,11 @@ Inherits DesktopTable
 		  End Select
 		End Function
 	#tag EndEvent
+
+
+	#tag Hook, Flags = &h0
+		Event Opening()
+	#tag EndHook
 
 
 	#tag Enum, Name = RowType, Type = Integer, Flags = &h0
