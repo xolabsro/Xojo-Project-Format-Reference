@@ -488,6 +488,7 @@ Begin DesktopWindow Window1
       _mPanelIndex    =   0
    End
    Begin DesktopColorPicker ColorPicker1
+      Enabled         =   True
       HasAlpha        =   True
       Index           =   -2147483648
       LockedInPosition=   False
@@ -1343,6 +1344,7 @@ Begin DesktopWindow Window1
       _mPanelIndex    =   0
    End
    Begin IPCSocket IPCSocket1
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Path            =   ""
@@ -1350,6 +1352,7 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
    End
    Begin Barcode Barcode1
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Scope           =   0
@@ -1359,6 +1362,7 @@ Begin DesktopWindow Window1
       Arguments       =   ""
       Backend         =   ""
       Canonical       =   False
+      Enabled         =   True
       ExecuteMode     =   0
       ExitCode        =   0
       Index           =   -2147483648
@@ -1381,6 +1385,7 @@ Begin DesktopWindow Window1
       DataSetReady    =   False
       DataTerminalReady=   False
       DTR             =   False
+      Enabled         =   True
       Handle          =   0
       Index           =   -2147483648
       LockedInPosition=   False
@@ -1393,6 +1398,7 @@ Begin DesktopWindow Window1
       XON             =   False
    End
    Begin ServerSocket ServerSocket1
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       MaximumSocketsConnected=   10
@@ -1403,6 +1409,7 @@ Begin DesktopWindow Window1
    End
    Begin TCPSocket TCPSocket1
       Address         =   ""
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Port            =   0
@@ -1410,6 +1417,7 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
    End
    Begin Thread Thread1
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Priority        =   5
@@ -1419,6 +1427,7 @@ Begin DesktopWindow Window1
       Type            =   0
    End
    Begin Timer Timer1
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Period          =   1000
@@ -1428,6 +1437,7 @@ Begin DesktopWindow Window1
    End
    Begin URLConnection URLConnection1
       AllowCertificateValidation=   False
+      Enabled         =   True
       FollowRedirects =   False
       HTTPStatusCode  =   0
       Index           =   -2147483648
@@ -1436,6 +1446,7 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
    End
    Begin UDPSocket UDPSocket1
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Port            =   0
@@ -1524,7 +1535,7 @@ End
 
 	#tag Event
 		Function CancelClosing(appQuitting As Boolean) As Boolean
-		  
+		  #Pragma unused appQuitting
 		End Function
 	#tag EndEvent
 

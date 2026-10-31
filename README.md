@@ -47,6 +47,11 @@ shows most of them.
   `DelegateDeclaration`, `ExternalMethod`, `Hook` (event definition), each closed by its `#tag End…`.
 - **Scope** is set by `Flags`: `&h0` public, `&h1` protected, `&h21` private. The signature's keyword must match
   (`Flags = &h21` → `Private Sub …`). Constants use `Scope = Public|Protected|Private` instead.
+- **Interface implementation:** add `Implements InterfaceName` to the declaration and implement its methods;
+  see [Window2](DesktopAppStructure/Folder2/Window2.xojo_window).
+- **Subclassing:** declare `Inherits BaseClass` after the class declaration;
+  see [PropertyTable](DesktopAppStructure/Folder2/PropertyTable.xojo_code).
+- **Pragmas:** see [PragmaDirectives.md](PragmaDirectives.md).
 - **Help text** (`Description = …` on a tag) is stored as hex-encoded UTF-8.
 - **Indentation:** `#tag` structure uses tabs. Code lines inside a method use the tag's tabs plus two spaces.
 - **Manifest item lines** (`.xojo_project`): `ItemType=Name;Path;ItemID;ParentID;false`. Root items have ParentID
