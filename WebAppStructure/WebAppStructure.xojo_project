@@ -1,5 +1,5 @@
 Type=Web2
-RBProjectVersion=2026.03
+RBProjectVersion=2026.031
 MinIDEVersion=20200200
 OrigIDEVersion=20260300
 Class=App;App.xojo_code;&h0000000046E70FFF;&h0000000000000000;false
@@ -21,6 +21,7 @@ WebToolbar=WebToolbar1;WebToolbar1.xojo_code;&h000000005F7B9FFF;&h00000000000000
 WebView=WebDialog1;WebDialog1.xojo_code;&h000000000066EFFF;&h0000000000000000;false
 Class=ClassInAModule;Module2/ClassInAModule.xojo_code;&h00000000268A07FF;&h000000003AFB57FF;false
 Interface=Interface1;Module2/Interface1.xojo_code;&h0000000019FF8FFF;&h000000003AFB57FF;false
+WebView=WebPage2;WebPage2.xojo_code;&h000000004C3EF7FF;&h0000000000000000;false
 DefaultWindow=WebPage1
 MajorVersion=1
 MinorVersion=0

@@ -1,5 +1,5 @@
 Type=Mobile
-RBProjectVersion=2026.03
+RBProjectVersion=2026.031
 MinIDEVersion=20190200
 OrigIDEVersion=20260300
 Class=App;App.xojo_code;&h0000000011B0CFFF;&h0000000000000000;false
@@ -17,6 +17,7 @@ Interface=Interface1;Module2/Interface1.xojo_code;&h0000000019FF8FFF;&h000000003
 MobileContainer=Container1;Container1.xojo_code;&h000000003C425FFF;&h0000000000000000;false
 Folder=Folder1;Folder1;&h000000005BD607FF;&h0000000000000000;false
 MultiImage=XojoLogoImage;Folder1/XojoLogoImage.xojo_image;&h0000000011B6E7FF;&h000000005BD607FF;false
+MobileScreen=Screen2;Screen2.xojo_code;&h000000000EDEB7FF;&h0000000000000000;false
 DefaultMobileView=Screen1
 DefaultMobileTabletScreen=Screen1
 MajorVersion=1

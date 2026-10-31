@@ -1,0 +1,177 @@
+#tag WebPage
+Begin WebPage WebPage2
+   AllowTabOrderWrap=   True
+   Compatibility   =   ""
+   ControlCount    =   0
+   ControlID       =   ""
+   CSSClasses      =   ""
+   Enabled         =   False
+   Height          =   400
+   ImplicitInstance=   True
+   Index           =   -2147483648
+   Indicator       =   0
+   IsImplicitInstance=   False
+   LayoutDirection =   0
+   LayoutType      =   0
+   Left            =   0
+   LockBottom      =   False
+   LockHorizontal  =   False
+   LockLeft        =   True
+   LockRight       =   False
+   LockTop         =   True
+   LockVertical    =   False
+   MinimumHeight   =   400
+   MinimumWidth    =   600
+   PanelIndex      =   0
+   ScaleFactor     =   0.0
+   TabIndex        =   0
+   Title           =   "Untitled"
+   Top             =   0
+   Visible         =   True
+   Width           =   600
+   _ImplicitInstance=   False
+   _mDesignHeight  =   0
+   _mDesignWidth   =   0
+   _mName          =   ""
+   _mPanelIndex    =   -1
+   Begin WebRectangle Rectangle1
+      BorderColor     =   &c000000FF
+      BorderThickness =   1
+      ControlCount    =   0
+      ControlID       =   ""
+      CornerSize      =   -1
+      CSSClasses      =   ""
+      Enabled         =   True
+      FillColor       =   &cFFFFFF
+      HasFillColor    =   False
+      Height          =   150
+      Index           =   -2147483648
+      Indicator       =   ""
+      LayoutDirection =   "LayoutDirections.LeftToRight"
+      LayoutType      =   "LayoutTypes.Fixed"
+      Left            =   291
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      PanelIndex      =   0
+      Scope           =   0
+      TabIndex        =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   20
+      Visible         =   True
+      Width           =   289
+      _mDesignHeight  =   0
+      _mDesignWidth   =   0
+      _mPanelIndex    =   -1
+      Begin WebLabel Label1
+         Bold            =   False
+         ControlID       =   ""
+         CSSClasses      =   ""
+         Enabled         =   True
+         FontName        =   ""
+         FontSize        =   0.0
+         Height          =   38
+         HTMLElement     =   0
+         Index           =   -2147483648
+         Indicator       =   ""
+         Italic          =   False
+         Left            =   311
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockHorizontal  =   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         LockVertical    =   False
+         Multiline       =   False
+         PanelIndex      =   0
+         Parent          =   "Rectangle1"
+         Scope           =   0
+         TabIndex        =   1
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   "Untitled"
+         TextAlignment   =   0
+         TextColor       =   &c000000FF
+         Tooltip         =   ""
+         Top             =   40
+         Underline       =   False
+         Visible         =   True
+         Width           =   100
+         _mPanelIndex    =   -1
+      End
+      Begin WebCheckbox Checkbox1
+         Caption         =   "Untitled"
+         ControlID       =   ""
+         CSSClasses      =   ""
+         Enabled         =   True
+         Height          =   38
+         Indeterminate   =   False
+         Index           =   -2147483648
+         Indicator       =   ""
+         Left            =   419
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockHorizontal  =   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         LockVertical    =   False
+         PanelIndex      =   0
+         Parent          =   "Rectangle1"
+         Scope           =   0
+         TabIndex        =   2
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Tooltip         =   ""
+         Top             =   40
+         Value           =   False
+         Visible         =   True
+         Width           =   100
+         _mPanelIndex    =   -1
+      End
+      Begin WebPopupMenu PopupMenu1
+         ControlID       =   ""
+         CSSClasses      =   ""
+         Enabled         =   True
+         Height          =   38
+         Index           =   -2147483648
+         Indicator       =   0
+         InitialValue    =   ""
+         LastAddedRowIndex=   0
+         LastRowIndex    =   0
+         Left            =   311
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockHorizontal  =   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         LockVertical    =   False
+         PanelIndex      =   0
+         Parent          =   "Rectangle1"
+         RowCount        =   0
+         Scope           =   0
+         SelectedRowIndex=   0
+         SelectedRowText =   ""
+         TabIndex        =   3
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Tooltip         =   ""
+         Top             =   86
+         Visible         =   True
+         Width           =   249
+         _mPanelIndex    =   -1
+      End
+   End
+End
+#tag EndWebPage
+
+#tag WindowCode
+#tag EndWindowCode
+

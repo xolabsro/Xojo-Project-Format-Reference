@@ -1,5 +1,5 @@
 Type=Desktop
-RBProjectVersion=2026.03
+RBProjectVersion=2026.031
 MinIDEVersion=20210300
 OrigIDEVersion=20260300
 Class=App;App.xojo_code;&h00000000146B47FF;&h0000000000000000;false
@@ -22,6 +22,7 @@ Worker=Worker1;Worker1.xojo_code;&h00000000752E2FFF;&h0000000000000000;false
 Class=ClassInAModule;Module2/ClassInAModule.xojo_code;&h00000000268A07FF;&h000000003AFB57FF;false
 Interface=Interface1;Module2/Interface1.xojo_code;&h0000000019FF8FFF;&h000000003AFB57FF;false
 Class=Class2;Class2.xojo_code;&h0000000027AAC7FF;&h0000000000000000;false
+DesktopWindow=Window2;Window2.xojo_window;&h00000000796AE7FF;&h0000000000000000;false
 DefaultWindow=Window1
 AppMenuBar=MainMenuBar
 MajorVersion=1
