@@ -72,10 +72,16 @@ Before reading or editing build steps, see [BuildAutomation.md](BuildAutomation.
 When an app may need native C/C++ code, see [Plugins/README.md](Plugins/README.md). It covers when a plugin is
 the right choice and how to write, build, package and install one with the Xojo Plugins SDK.
 
+## Web controls (WebSDK)
+
+When a web app may need a custom control, see [WebSDK/README.md](WebSDK/README.md). It covers when a custom control
+is the right choice and how to write its Xojo and JavaScript halves with the Xojo WebSDK.
+
 ## Repository files
 
 - `BuildAutomation.md` is the format reference for `Build Automation.xojo_code`, common to all project types.
 - `Plugins/SDK/` is an unmodified copy of the Xojo Plugins SDK headers and glue code, used to build plugins.
+- `WebSDK/SDK/` is an unmodified copy of the WebSDK TypeScript typings (`XojoWebSDK.d.ts`).
 - `.gitignore` excludes the per-user `.xojo_uistate` files, build output, the IDE's `*.obsolete_*` leftover
   folders, agentic-mode handshake files and OS clutter.
 - `.gitattributes` normalizes text line endings and marks `.xojo_resources` and `.xojo_uistate` as binary.
